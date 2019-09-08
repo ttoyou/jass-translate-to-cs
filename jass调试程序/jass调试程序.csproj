@@ -1,0 +1,206 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{3CFFAD2A-0F7A-4634-9FDC-E7FCF7331BF2}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>jass调试程序</RootNamespace>
+    <AssemblyName>jass调试程序</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Compile Include="jassSupports\Classes\Extra\leaderboarditem.cs" />
+    <Compile Include="jassSupports\Common.j_Functions\common.j_Multiboard.cs" />
+    <Compile Include="jassSupports\Common.j_Functions\common.j_Unit.cs" />
+    <Compile Include="jassSupports\EventSystem\TEvent.cs" />
+    <Compile Include="jassSupports\EventSystem\TriggerEventSystem_outs.cs" />
+    <Compile Include="jassSupports\Iteration\Iteration.cs" />
+    <Compile Include="Recorder\Recorder.cs" />
+    <Page Include="MainWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="jassSupports\Common.j_Functions\common.j_Hashtable.cs" />
+    <Compile Include="jassSupports\Common.j_Functions\common.j_Math_Convert.cs" />
+    <Compile Include="jassSupports\Common.j_Functions\common.j_Trigger.cs" />
+    <Compile Include="jassSupports\blizzard.j.cs" />
+    <Compile Include="jassSupports\Classes\ability.cs" />
+    <Compile Include="jassSupports\Classes\agent.cs" />
+    <Compile Include="jassSupports\Classes\aidifficulty.cs" />
+    <Compile Include="jassSupports\Classes\alliancetype.cs" />
+    <Compile Include="jassSupports\Classes\attacktype.cs" />
+    <Compile Include="jassSupports\Classes\blendmode.cs" />
+    <Compile Include="jassSupports\Classes\boolexpr.cs" />
+    <Compile Include="jassSupports\Classes\buff.cs" />
+    <Compile Include="jassSupports\Classes\button.cs" />
+    <Compile Include="jassSupports\Classes\camerafield.cs" />
+    <Compile Include="jassSupports\Classes\camerasetup.cs" />
+    <Compile Include="jassSupports\Classes\code.cs" />
+    <Compile Include="jassSupports\Classes\conditionfunc.cs" />
+    <Compile Include="jassSupports\Classes\damagetype.cs" />
+    <Compile Include="jassSupports\Classes\defeatcondition.cs" />
+    <Compile Include="jassSupports\Classes\destructable.cs" />
+    <Compile Include="jassSupports\Classes\dialog.cs" />
+    <Compile Include="jassSupports\Classes\dialogevent.cs" />
+    <Compile Include="jassSupports\Classes\effect.cs" />
+    <Compile Include="jassSupports\Classes\effecttype.cs" />
+    <Compile Include="jassSupports\Classes\event.cs" />
+    <Compile Include="jassSupports\Classes\eventid.cs" />
+    <Compile Include="jassSupports\Classes\fgamestate.cs" />
+    <Compile Include="jassSupports\Classes\filterfunc.cs" />
+    <Compile Include="jassSupports\Classes\fogmodifier.cs" />
+    <Compile Include="jassSupports\Classes\fogstate.cs" />
+    <Compile Include="jassSupports\Classes\force.cs" />
+    <Compile Include="jassSupports\Classes\gamecache.cs" />
+    <Compile Include="jassSupports\Classes\gamedifficulty.cs" />
+    <Compile Include="jassSupports\Classes\gameevent.cs" />
+    <Compile Include="jassSupports\Classes\gamespeed.cs" />
+    <Compile Include="jassSupports\Classes\gamestate.cs" />
+    <Compile Include="jassSupports\Classes\gametype.cs" />
+    <Compile Include="jassSupports\Classes\group.cs" />
+    <Compile Include="jassSupports\Classes\handle.cs" />
+    <Compile Include="jassSupports\Classes\hashtable.cs" />
+    <Compile Include="jassSupports\Classes\igamestate.cs" />
+    <Compile Include="jassSupports\Classes\image.cs" />
+    <Compile Include="jassSupports\Classes\item.cs" />
+    <Compile Include="jassSupports\Classes\itempool.cs" />
+    <Compile Include="jassSupports\Classes\itemtype.cs" />
+    <Compile Include="jassSupports\Classes\leaderboard.cs" />
+    <Compile Include="jassSupports\Classes\lightning.cs" />
+    <Compile Include="jassSupports\Classes\limitop.cs" />
+    <Compile Include="jassSupports\Classes\location.cs" />
+    <Compile Include="jassSupports\Classes\mapcontrol.cs" />
+    <Compile Include="jassSupports\Classes\mapdensity.cs" />
+    <Compile Include="jassSupports\Classes\mapflag.cs" />
+    <Compile Include="jassSupports\Classes\mapsetting.cs" />
+    <Compile Include="jassSupports\Classes\mapvisibility.cs" />
+    <Compile Include="jassSupports\Classes\multiboard.cs" />
+    <Compile Include="jassSupports\Classes\multiboarditem.cs" />
+    <Compile Include="jassSupports\Classes\pathingtype.cs" />
+    <Compile Include="jassSupports\Classes\placement.cs" />
+    <Compile Include="jassSupports\Classes\player.cs" />
+    <Compile Include="jassSupports\Classes\playercolor.cs" />
+    <Compile Include="jassSupports\Classes\playerevent.cs" />
+    <Compile Include="jassSupports\Classes\playergameresult.cs" />
+    <Compile Include="jassSupports\Classes\playerscore.cs" />
+    <Compile Include="jassSupports\Classes\playerslotstate.cs" />
+    <Compile Include="jassSupports\Classes\playerstate.cs" />
+    <Compile Include="jassSupports\Classes\playerunitevent.cs" />
+    <Compile Include="jassSupports\Classes\quest.cs" />
+    <Compile Include="jassSupports\Classes\questitem.cs" />
+    <Compile Include="jassSupports\Classes\race.cs" />
+    <Compile Include="jassSupports\Classes\racepreference.cs" />
+    <Compile Include="jassSupports\Classes\raritycontrol.cs" />
+    <Compile Include="jassSupports\Classes\rect.cs" />
+    <Compile Include="jassSupports\Classes\region.cs" />
+    <Compile Include="jassSupports\Classes\sound.cs" />
+    <Compile Include="jassSupports\Classes\soundtype.cs" />
+    <Compile Include="jassSupports\Classes\startlocprio.cs" />
+    <Compile Include="jassSupports\Classes\terraindeformation.cs" />
+    <Compile Include="jassSupports\Classes\texmapflags.cs" />
+    <Compile Include="jassSupports\Classes\texttag.cs" />
+    <Compile Include="jassSupports\Classes\timer.cs" />
+    <Compile Include="jassSupports\Classes\timerdialog.cs" />
+    <Compile Include="jassSupports\Classes\trackable.cs" />
+    <Compile Include="jassSupports\Classes\trigger.cs" />
+    <Compile Include="jassSupports\Classes\triggeraction.cs" />
+    <Compile Include="jassSupports\Classes\triggercondition.cs" />
+    <Compile Include="jassSupports\Classes\ubersplat.cs" />
+    <Compile Include="jassSupports\Classes\unit.cs" />
+    <Compile Include="jassSupports\Classes\unitevent.cs" />
+    <Compile Include="jassSupports\Classes\unitpool.cs" />
+    <Compile Include="jassSupports\Classes\unitstate.cs" />
+    <Compile Include="jassSupports\Classes\unittype.cs" />
+    <Compile Include="jassSupports\Classes\version.cs" />
+    <Compile Include="jassSupports\Classes\volumegroup.cs" />
+    <Compile Include="jassSupports\Classes\weapontype.cs" />
+    <Compile Include="jassSupports\Classes\weathereffect.cs" />
+    <Compile Include="jassSupports\Classes\widget.cs" />
+    <Compile Include="jassSupports\Classes\widgetevent.cs" />
+    <Compile Include="jassSupports\array.cs" />
+    <Compile Include="jassSupports\common.j.cs" />
+    <Compile Include="jassSupports\EventSystem\TriggerEventSystem.cs" />
+    <Compile Include="MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <Compile Include="jassSupports\common.j_variables.cs" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
