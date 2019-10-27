@@ -77,7 +77,12 @@ namespace Map
             if (s == null) return 0;
             return Encoding.UTF8.GetBytes(s).Length;
         }
-
+        /// <summary>
+        /// 大小写转换
+        /// </summary>
+        /// <param name="source"></param>
+        /// <param name="upper"></param>
+        /// <returns></returns>
         public static @string StringCase(@string source, boolean upper)
         {
             if (upper)
@@ -85,7 +90,11 @@ namespace Map
             else
                 return source.ToLower();
         }
-
+        /// <summary>
+        /// 获取字符串哈希值
+        /// </summary>
+        /// <param name="s"></param>
+        /// <returns></returns>
         public static integer StringHash(@string s)
         {
             if (s == null) s = @string.Empty;
@@ -386,17 +395,32 @@ namespace Map
         {
             return whichPlayer.Name;
         }
-
+        /// <summary>
+        /// 创建计时器
+        /// </summary>
+        /// <returns></returns>
         public static timer CreateTimer()
         {
-            return new timer();
+            timer t = new timer();
+            Recorder.Timers.Add(t);
+            return t;
         }
-
+        /// <summary>
+        /// 摧毁计时器
+        /// </summary>
+        /// <param name="whichTimer"></param>
         public static void DestroyTimer(timer whichTimer)
         {
+            Recorder.Timers.Remove(whichTimer);
             whichTimer.destroyed = true;
         }
-
+        /// <summary>
+        /// 计时器开始
+        /// </summary>
+        /// <param name="whichTimer"></param>
+        /// <param name="timeout"></param>
+        /// <param name="periodic"></param>
+        /// <param name="handlerFunc"></param>
         public static void TimerStart(timer whichTimer, real timeout, boolean periodic, code handlerFunc)
         {
             whichTimer.running = true;
@@ -420,27 +444,36 @@ namespace Map
         {
             throw new NotImplementedException();
         }
-
+        /// <summary>
+        /// 暂停计时器
+        /// </summary>
+        /// <param name="whichTimer"></param>
         public static void PauseTimer(timer whichTimer)
         {
             whichTimer.paused = true;
         }
-
+        /// <summary>
+        /// 恢复计时器
+        /// </summary>
+        /// <param name="whichTimer"></param>
         public static void ResumeTimer(timer whichTimer)
         {
             whichTimer.paused = false;
         }
 
-        public static timer GetExpiredTimer()
-        {
-            throw new NotImplementedException();
-        }
-
+        
+        /// <summary>
+        /// 创建单位组
+        /// </summary>
+        /// <returns></returns>
         public static group CreateGroup()
         {
             return new group();
         }
-
+        /// <summary>
+        /// 摧毁单位组
+        /// </summary>
+        /// <param name="whichGroup"></param>
         public static void DestroyGroup(group whichGroup)
         {
             whichGroup.destroyed = true;
@@ -558,12 +591,18 @@ namespace Map
                 return whichGroup.First();
             else return null;
         }
-
+        /// <summary>
+        /// 创建玩家组
+        /// </summary>
+        /// <returns></returns>
         public static force CreateForce()
         {
             return new force();
         }
-
+        /// <summary>
+        /// 摧毁玩家组
+        /// </summary>
+        /// <param name="whichForce"></param>
         public static void DestroyForce(force whichForce)
         {
             whichForce.destroyed = true;
@@ -892,11 +931,6 @@ namespace Map
             throw new NotImplementedException();
         }
 
-        public static @string GetSaveBasicFilename()
-        {
-            throw new NotImplementedException();
-        }
-
 
         public static real GetWidgetLife(widget whichWidget)
         {
@@ -1198,23 +1232,28 @@ namespace Map
             whichItem.userData = data;
         }
 
-       
 
+        /// <summary>
+        /// 清除玩家的单位框选
+        /// </summary>
         public static void ClearSelection()
         {
         }
 
-        
-        
+
+
 
         public static player Player(integer number)
         {
             return player.get(number);
         }
-
+        /// <summary>
+        /// 获取本地玩家
+        /// </summary>
+        /// <returns></returns>
         public static player GetLocalPlayer()
         {
-            throw new NotImplementedException();
+            return Recorder.LocalPlayer;
         }
 
         public static boolean IsPlayerAlly(player whichPlayer, player otherPlayer)
@@ -1558,11 +1597,12 @@ namespace Map
 
         public static gamedifficulty GetDefaultDifficulty()
         {
-            throw new NotImplementedException();
+            return MapSetting.DefaultDifficulty;
         }
 
         public static void SetDefaultDifficulty(gamedifficulty g)
         {
+            MapSetting.DefaultDifficulty = g;
         }
 
         public static void SetCustomCampaignButtonVisible(integer whichButton, boolean visible)
@@ -1579,40 +1619,7 @@ namespace Map
             throw new NotImplementedException();
         }
 
-        public static dialog DialogCreate()
-        {
-            return new dialog();
-        }
 
-        public static void DialogDestroy(dialog whichDialog)
-        {
-        }
-
-        public static void DialogClear(dialog whichDialog)
-        {
-            whichDialog.items.Clear();
-        }
-
-        public static void DialogSetMessage(dialog whichDialog, @string messageText)
-        {
-        }
-
-        public static button DialogAddButton(dialog whichDialog, @string buttonText, integer hotkey)
-        {
-            button btn = new button { text = buttonText, hotkey = hotkey };
-            whichDialog.items.Add(btn);
-            return btn;
-        }
-
-        public static button DialogAddQuitButton(dialog whichDialog, boolean doScoreScreen, @string buttonText, integer hotkey)
-        {
-            throw new NotImplementedException();
-        }
-
-        public static void DialogDisplay(player whichPlayer, dialog whichDialog, boolean flag)
-        {
-            whichDialog.displayed[whichPlayer] = flag;
-        }
 
         public static boolean ReloadGameCachesFromDisk()
         {
@@ -1952,9 +1959,7 @@ namespace Map
         {
         }
 
-        public static void DisplayLoadDialog()
-        {
-        }
+
 
         public static void SetAltMinimapIcon(@string iconPath)
         {
@@ -2228,126 +2233,7 @@ namespace Map
         {
         }
 
-        public static leaderboard CreateLeaderboard()
-        {
-            return new leaderboard();
-        }
-
-        public static void DestroyLeaderboard(leaderboard lb)
-        {
-            lb.destroyed = true;
-        }
-
-        public static void LeaderboardDisplay(leaderboard lb, boolean show)
-        {
-            lb.isDisplayed = show;
-        }
-
-        public static boolean IsLeaderboardDisplayed(leaderboard lb)
-        {
-            return lb.isDisplayed;
-        }
-
-        public static integer LeaderboardGetItemCount(leaderboard lb)
-        {
-            throw new NotImplementedException();
-        }
-
-        public static void LeaderboardSetSizeByItemCount(leaderboard lb, integer count)
-        {
-        }
-
-        public static void LeaderboardAddItem(leaderboard lb, @string label, integer value, player p)
-        {
-        }
-
-        public static void LeaderboardRemoveItem(leaderboard lb, integer index)
-        {
-        }
-
-        public static void LeaderboardRemovePlayerItem(leaderboard lb, player p)
-        {
-        }
-
-        public static void LeaderboardClear(leaderboard lb)
-        {
-        }
-
-        public static void LeaderboardSortItemsByValue(leaderboard lb, boolean ascending)
-        {
-        }
-
-        public static void LeaderboardSortItemsByPlayer(leaderboard lb, boolean ascending)
-        {
-        }
-
-        public static void LeaderboardSortItemsByLabel(leaderboard lb, boolean ascending)
-        {
-        }
-
-        public static boolean LeaderboardHasPlayerItem(leaderboard lb, player p)
-        {
-            throw new NotImplementedException();
-        }
-
-        public static integer LeaderboardGetPlayerIndex(leaderboard lb, player p)
-        {
-            throw new NotImplementedException();
-        }
-
-        public static void LeaderboardSetLabel(leaderboard lb, @string label)
-        {
-        }
-
-        public static @string LeaderboardGetLabelText(leaderboard lb)
-        {
-            throw new NotImplementedException();
-        }
-
-        public static void PlayerSetLeaderboard(player toPlayer, leaderboard lb)
-        {
-        }
-
-        public static leaderboard PlayerGetLeaderboard(player toPlayer)
-        {
-            throw new NotImplementedException();
-        }
-
-        public static void LeaderboardSetLabelColor(leaderboard lb, integer red, integer green, integer blue, integer alpha)
-        {
-            lb.titleR = red;
-            lb.titleG = green;
-            lb.titleB = blue;
-            lb.titleA = alpha;
-        }
-
-        public static void LeaderboardSetValueColor(leaderboard lb, integer red, integer green, integer blue, integer alpha)
-        {
-        }
-
-        public static void LeaderboardSetStyle(leaderboard lb, boolean showLabel, boolean showNames, boolean showValues, boolean showIcons)
-        {
-        }
-
-        public static void LeaderboardSetItemValue(leaderboard lb, integer whichItem, integer val)
-        {
-        }
-
-        public static void LeaderboardSetItemLabel(leaderboard lb, integer whichItem, @string val)
-        {
-        }
-
-        public static void LeaderboardSetItemStyle(leaderboard lb, integer whichItem, boolean showLabel, boolean showValue, boolean showIcon)
-        {
-        }
-
-        public static void LeaderboardSetItemLabelColor(leaderboard lb, integer whichItem, integer red, integer green, integer blue, integer alpha)
-        {
-        }
-
-        public static void LeaderboardSetItemValueColor(leaderboard lb, integer whichItem, integer red, integer green, integer blue, integer alpha)
-        {
-        }
+        
 
 
         public static void SetCameraPosition(real x, real y)
@@ -2779,10 +2665,15 @@ namespace Map
         public static void UnregisterStackedSound(sound soundHandle, boolean byPosition, real rectwidth, real rectheight)
         {
         }
-
+        /// <summary>
+        /// 添加天气效果
+        /// </summary>
+        /// <param name="where"></param>
+        /// <param name="effectID"></param>
+        /// <returns></returns>
         public static weathereffect AddWeatherEffect(rect where, integer effectID)
         {
-            throw new NotImplementedException();
+            return new weathereffect();
         }
 
         public static void RemoveWeatherEffect(weathereffect whichEffect)

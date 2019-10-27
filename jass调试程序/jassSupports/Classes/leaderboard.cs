@@ -11,6 +11,9 @@ namespace Map
     using boolean = System.Boolean;
     using @string = System.String;
     using code = System.Delegate;
+    /// <summary>
+    /// 游戏中的排行榜
+    /// </summary>
     public class leaderboard : agent
     {
         public boolean isDisplayed = true;

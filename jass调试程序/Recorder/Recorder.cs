@@ -37,7 +37,11 @@ namespace RuntimeRecorder
 
         public static List<multiboard> Multiboards { get; } = new List<multiboard>();
 
-        public static List<string> MessageList = new List<string>();
+        public static List<dialog> Dialogs { get; } = new List<dialog>();
+
+        public static List<string> MessageList { get; } = new List<string>();
+
+        public static List<timer> Timers { get; } = new List<timer>();
 
         public delegate void messageSending();
 
@@ -53,5 +57,7 @@ namespace RuntimeRecorder
         public static int Teams { get; set; }
 
         public static int PlayerCount { get; set; }
+
+        public static gamedifficulty DefaultDifficulty { get; set; }
     }
 }

@@ -54,7 +54,11 @@ namespace Map
         {
             return (real)Math.Atan2(y, x);
         }
-
+        /// <summary>
+        /// 平方根
+        /// </summary>
+        /// <param name="x"></param>
+        /// <returns>返回平方根</returns>
         public static real SquareRoot(real x)
         {
             return (real)Math.Sqrt(x);
@@ -64,12 +68,20 @@ namespace Map
         {
             return (real)Math.Pow(x, power);
         }
-
+        /// <summary>
+        /// 转换整数为实数
+        /// </summary>
+        /// <param name="i"></param>
+        /// <returns>返回转换的实数</returns>
         public static real I2R(integer i)
         {
             return i;
         }
-
+        /// <summary>
+        /// 转换实数为整数
+        /// </summary>
+        /// <param name="r"></param>
+        /// <returns>返回转换的整数</returns>
         public static integer R2I(real r)
         {
             return (integer)r;

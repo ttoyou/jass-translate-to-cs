@@ -14,6 +14,10 @@ namespace Map
 
     partial class MapScript
     {
+        /// <summary>
+        /// 初始化哈希表
+        /// </summary>
+        /// <returns></returns>
         public static hashtable InitHashtable()
         {
             return new hashtable();

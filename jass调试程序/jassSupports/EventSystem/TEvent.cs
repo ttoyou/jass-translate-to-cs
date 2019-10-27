@@ -154,5 +154,9 @@ namespace Map.Extra
         public button ClickedButton { get; }
 
         public dialog ClickedDialog { get; }
+
+        public timer ExpiredTimer { get; }
+
+        public string SaveBasicFilename { get; }
     }
 }

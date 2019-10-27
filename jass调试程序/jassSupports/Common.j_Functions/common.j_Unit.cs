@@ -25,6 +25,15 @@ namespace Map
             whichUnit.userData = data;
         }
 
+        /// <summary>
+        /// 创建单位
+        /// </summary>
+        /// <param name="id">玩家的ID</param>
+        /// <param name="unitid">单位的ID</param>
+        /// <param name="x">单位的x坐标</param>
+        /// <param name="y">单位的y坐标</param>
+        /// <param name="face">面向角度</param>
+        /// <returns>返回创建的单位</returns>
         public static unit CreateUnit(player id, integer unitid, real x, real y, real face)
         {
             return new unit() { owner = id, unitid = unitid, x = x, y = y, facing = face };

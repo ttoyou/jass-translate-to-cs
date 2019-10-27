@@ -15,36 +15,52 @@ namespace Map
     partial class MapScript
     {
 
-        #region TriggerSettingsFunction
+        #region TriggerSettings
+        /// <summary>
+        /// 创建触发器
+        /// </summary>
+        /// <returns>创建的触发器</returns>
         public static trigger CreateTrigger()
         {
             trigger nt = new trigger();
             RuntimeRecorder.Recorder.Triggers.Add(nt);
             return nt;
         }
-
+        /// <summary>
+        /// 摧毁触发器
+        /// </summary>
+        /// <param name="whichTrigger"></param>
         public static void DestroyTrigger(trigger whichTrigger)
         {
             whichTrigger.destroyed = true;
             RuntimeRecorder.Recorder.Triggers.Remove(whichTrigger);
         }
-
+        /// <summary>
+        /// 重设触发器
+        /// </summary>
+        /// <param name="whichTrigger"></param>
         public static void ResetTrigger(trigger whichTrigger)
         {
         }
-
+        /// <summary>
+        /// 开启触发器
+        /// </summary>
+        /// <param name="whichTrigger"></param>
         public static void EnableTrigger(trigger whichTrigger)
         {
             whichTrigger.isEnabled = true;
         }
-
+        /// <summary>
+        /// 关闭触发器
+        /// </summary>
+        /// <param name="whichTrigger"></param>
         public static void DisableTrigger(trigger whichTrigger)
         {
             whichTrigger.isEnabled = false;
         }
         #endregion
 
-        #region GetTriggerStatesFunction
+        #region GetTriggerStates
         public static boolean IsTriggerEnabled(trigger whichTrigger)
         {
             return whichTrigger.isEnabled;
@@ -56,18 +72,24 @@ namespace Map
         }
         #endregion
 
-        #region GetEventDataFunction
+        #region GetEventData
 
         public static region GetTriggeringRegion()
         {
             return TriggerEventSystem.CurrentEvent.TriggeringRegion;
         }
-
+        /// <summary>
+        /// （触发事件）进入的单位
+        /// </summary>
+        /// <returns></returns>
         public static unit GetEnteringUnit()
         {
             return TriggerEventSystem.CurrentEvent.EnteringUnit;
         }
-
+        /// <summary>
+        /// （触发事件）离开的单位
+        /// </summary>
+        /// <returns></returns>
         public static unit GetLeavingUnit()
         {
             return TriggerEventSystem.CurrentEvent.LeavingUnit;
@@ -112,12 +134,18 @@ namespace Map
         {
             return TriggerEventSystem.CurrentEvent.WinningPlayer;
         }
-
+        /// <summary>
+        /// （触发事件）触发单位
+        /// </summary>
+        /// <returns></returns>
         public static unit GetTriggerUnit()
         {
             return TriggerEventSystem.CurrentEvent.TriggerUnit;
         }
-
+        /// <summary>
+        /// （触发事件）事件伤害值
+        /// </summary>
+        /// <returns></returns>
         public static real GetEventDamage()
         {
             return TriggerEventSystem.CurrentEvent.EventDamage;
@@ -418,15 +446,31 @@ namespace Map
         {
             return TriggerEventSystem.CurrentEvent.EventGameState;
         }
-
+        /// <summary>
+        /// （触发事件）被点击的按钮
+        /// </summary>
+        /// <returns></returns>
         public static button GetClickedButton()
         {
             return TriggerEventSystem.CurrentEvent.ClickedButton;
         }
-
+        /// <summary>
+        /// （触发事件）被点击的对话框
+        /// </summary>
+        /// <returns></returns>
         public static dialog GetClickedDialog()
         {
             return TriggerEventSystem.CurrentEvent.ClickedDialog;
+        }
+
+        public static timer GetExpiredTimer()
+        {
+            return TriggerEventSystem.CurrentEvent.ExpiredTimer;
+        }
+
+        public static @string GetSaveBasicFilename()
+        {
+            return TriggerEventSystem.CurrentEvent.SaveBasicFilename;
         }
 
         #endregion
@@ -592,7 +636,12 @@ namespace Map
         {
             whichTrigger.conditions.Clear();
         }
-
+        /// <summary>
+        /// 触发器添加动作
+        /// </summary>
+        /// <param name="whichTrigger"></param>
+        /// <param name="actionFunc"></param>
+        /// <returns></returns>
         public static triggeraction TriggerAddAction(trigger whichTrigger, code actionFunc)
         {
             triggeraction addAction = new triggeraction() { action = (Action)actionFunc };

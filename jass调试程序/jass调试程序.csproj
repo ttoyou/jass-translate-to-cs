@@ -56,6 +56,8 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="jassSupports\Classes\Extra\leaderboarditem.cs" />
+    <Compile Include="jassSupports\Common.j_Functions\common.j_Dialog.cs" />
+    <Compile Include="jassSupports\Common.j_Functions\common.j_LeaderBoard.cs" />
     <Compile Include="jassSupports\Common.j_Functions\common.j_Multiboard.cs" />
     <Compile Include="jassSupports\Common.j_Functions\common.j_Unit.cs" />
     <Compile Include="jassSupports\EventSystem\TEvent.cs" />

@@ -10,6 +10,9 @@ namespace Map
     using integer = System.Int32;
     using boolean = System.Boolean;
 
+    /// <summary>
+    /// 游戏中的单位
+    /// </summary>
     public class unit : widget
     {
         public unit() : base()
